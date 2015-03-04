@@ -1,11 +1,19 @@
 #lang racket/base
 
-(require scribble/base
-         scribble/private/defaults
+(require (except-in scribble/base
+                    author)
+         scribble/private/defaults scribble/core scribble/decode
          setup/collects
          (rename-in scribble/doclang
                     [#%module-begin -#%module-begin])
          (for-syntax racket/base))
+
+(provide (all-from-out scribble/base)
+         (except-out (all-from-out scribble/doclang)
+                     -#%module-begin)
+         (rename-out [--#%module-begin #%module-begin])
+         author
+         affil)
 
 (define (post-process doc)
   (add-defaults doc
@@ -22,12 +30,22 @@
      (quasisyntax/loc stx
        (-#%module-begin doc post-process () ?e ...))]))
 
-(provide (all-from-out scribble/base)
-         (except-out (all-from-out scribble/doclang)
-                     -#%module-begin)
-         (rename-out [--#%module-begin #%module-begin]))
-
 ;; Reader configuration for #lang
 (module reader scribble/base/reader
   lipics
   #:wrapper1 (lambda (t) (t)))
+
+
+;; TODO abstract between the two
+(define (author #:affil-no [affil-no "1"] . name)
+  (make-paragraph
+   (make-style 'pretitle '())
+   (make-multiarg-element (make-style "lipicsauthor" '())
+                          (list (decode-content (list affil-no))
+                                (decode-content name)))))
+(define (affil #:affil-no [affil-no "1"] . name)
+  (make-paragraph
+   (make-style 'pretitle '())
+   (make-multiarg-element (make-style "lipicsaffil" '())
+                          (list (decode-content (list affil-no))
+                                (decode-content name)))))
