@@ -13,7 +13,8 @@
                      -#%module-begin)
          (rename-out [--#%module-begin #%module-begin])
          author
-         affil)
+         affil
+         abstract)
 
 (define (post-process doc)
   (add-defaults doc
@@ -49,3 +50,30 @@
    (make-multiarg-element (make-style "lipicsaffil" '())
                           (list (decode-content (list affil-no))
                                 (decode-content name)))))
+
+
+;; command wrappers
+;; taken from classicthesis-scribble
+(define-syntax-rule (define-wrappers (name style) ...)
+  (begin
+    (define (name . str)
+      (make-element (make-style style '()) (decode-content str)))
+    ...
+    (provide name ...)))
+(define-syntax-rule (define-includer name style)
+  (begin
+    (define-syntax (name stx)
+      (syntax-case stx ()
+        [(_ module)
+         (let ()
+           (define name* (gensym 'name))
+           #'(begin
+               (require (rename-in module [doc name*]))
+               (make-nested-flow (make-style style '(command))
+                                 (part-blocks name*))))]))
+    (provide name)))
+
+(define-wrappers
+  [abstract "lipicsabstract"])
+
+(define-includer include-abstract "lipicsabstract")

@@ -17,6 +17,11 @@ Other place, Some country
 
 @tt|{bob@other.edu}|}
 
+@; @abstract{
+@; This is not a real abstract. It just plays one on TV.
+@; }
+@include-abstract{example-abstract.scrbl}
+
 @section{Introduction}
 
 Lorem ipsum.
