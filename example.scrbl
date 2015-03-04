@@ -1,4 +1,4 @@
-#lang scribble-lipics
+#lang lipics
 
 @title{Test}
 @author{Bob Arctor}

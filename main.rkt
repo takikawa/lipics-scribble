@@ -11,9 +11,9 @@
   (add-defaults doc
                 ;; FIXME: allow configuration
                 (string->bytes/utf-8 "\\documentclass[a4paper,UKenglish]{lipics}")
-                (collection-file-path "style.tex" "scribble-lipics")
+                (collection-file-path "style.tex" "lipics")
                 (list (collection-file-path "lipics.cls"
-                                            "scribble-lipics"))
+                                            "lipics"))
                 #f))
 
 (define-syntax (--#%module-begin stx)
@@ -29,5 +29,5 @@
 
 ;; Reader configuration for #lang
 (module reader scribble/base/reader
-  scribble-lipics
+  lipics
   #:wrapper1 (lambda (t) (t)))
