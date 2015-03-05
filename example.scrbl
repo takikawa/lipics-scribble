@@ -1,6 +1,7 @@
 #lang lipics
 
-@(require scriblib/autobib)
+@(require scriblib/autobib
+          scriblib/footnote)
 
 @(define-cite ~cite citet generate-bibliography #:style lipics-style)
 
@@ -17,7 +18,7 @@
              #:date "1968"
              #:location (book-location #:publisher "Doubleday")))
 
-@title{Test}
+@title{Test@note{This is a title footnote}}
 @author[#:affil-no "1"]{Bob Arctor}
 @author[#:affil-no "2"]{Bob Arctor, Jr.}
 @affil[#:affil-no "1"]{ @; the blank lines are significant. yes, that's ugly
@@ -55,7 +56,7 @@ justo, nec fermentum augue.@~cite[androids] Donec sem massa, porttitor sed lorem
 feugiat velit. Vestibulum cursus sodales mi, et laoreet purus sodales
 in. Curabitur elementum volutpat velit, nec mollis justo. Mauris massa risus,
 ornare vitae vulputate a, facilisis id sem. Pellentesque vestibulum sapien ac
-purus tincidunt blandit. Proin sem lorem, suscipit ut neque egestas, vulputate
+purus tincidunt blandit.@note{This is a footnote} Proin sem lorem, suscipit ut neque egestas, vulputate
 tristique lacus. Curabitur mi metus, aliquet vitae consequat eget, posuere ut
 dui. Aliquam ac porttitor mi.
 

@@ -171,5 +171,4 @@ FORMAT
 ;; TODO
 ;; - test figures
 ;; - figure out listings
-;; - test footnotes, including on the title
 ;; - acks
