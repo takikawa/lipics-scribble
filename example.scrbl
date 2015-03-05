@@ -62,6 +62,12 @@ purus tincidunt blandit.@note{This is a footnote} Proin sem lorem, suscipit ut n
 tristique lacus. Curabitur mi metus, aliquet vitae consequat eget, posuere ut
 dui. Aliquam ac porttitor mi.
 
+@itemize[
+  @item{Item 1}
+  @item{Item 2}
+  @item{Item 3}
+]
+
 Ut ullamcorper arcu nec nisl gravida, in accumsan risus bibendum. Quisque
 turpis mauris, efficitur in magna in, ultrices cursus elit. Fusce sit amet
 luctus augue. Mauris elementum quis ipsum ac maximus. Integer pretium libero
