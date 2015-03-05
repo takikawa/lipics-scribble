@@ -17,6 +17,9 @@ Other place, Some country
 
 @tt|{bob@other.edu}|}
 
+@author-running{B. Arctor and B. Arctor, Jr.}
+@title-running{Still a Test}
+
 @; @abstract{
 @; This is not a real abstract. It just plays one on TV.
 @; }

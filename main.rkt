@@ -69,6 +69,16 @@ FORMAT
       (make-element (make-style style '()) (decode-content str)))
     ...
     (provide name ...)))
+(define-syntax-rule (define-pre-title-wrappers (name style) ...)
+  (begin
+    (define (name . str)
+      (make-paragraph
+       (make-style 'pretitle '())
+       (make-multiarg-element
+        (make-style style '())
+        (decode-content str))))
+    ...
+    (provide name ...)))
 (define-syntax-rule (define-includer name style)
   (begin
     (define-syntax (name stx)
@@ -91,6 +101,10 @@ FORMAT
 
 (define-wrappers
   [abstract "lipicsabstract"])
+
+(define-pre-title-wrappers
+  [author-running "authorrunning"]
+  [title-running  "titlerunning"])
 
 (define-includer include-abstract "lipicsabstract")
 
