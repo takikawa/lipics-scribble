@@ -1,5 +1,22 @@
 #lang lipics
 
+@(require scriblib/autobib)
+
+@(define-cite ~cite citet generate-bibliography #:style lipics-style)
+
+@;; Example bibliography entry
+@(define asd
+   (make-bib #:title "A Scanner Darkly"
+             #:author (authors "Phillip K. Dick")
+             #:date "1977"
+             #:location (book-location #:publisher "Doubleday")))
+
+@(define androids
+   (make-bib #:title "Do Androids Dream of Electric Sheep?"
+             #:author (authors "Phillip K. Dick")
+             #:date "1968"
+             #:location (book-location #:publisher "Doubleday")))
+
 @title{Test}
 @author[#:affil-no "1"]{Bob Arctor}
 @author[#:affil-no "2"]{Bob Arctor, Jr.}
@@ -33,8 +50,8 @@ Other place, Some country
 
 @section{Introduction}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id sagittis
-justo, nec fermentum augue. Donec sem massa, porttitor sed lorem vitae, euismod
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.@~cite[asd] Vestibulum id sagittis
+justo, nec fermentum augue.@~cite[androids] Donec sem massa, porttitor sed lorem vitae, euismod
 feugiat velit. Vestibulum cursus sodales mi, et laoreet purus sodales
 in. Curabitur elementum volutpat velit, nec mollis justo. Mauris massa risus,
 ornare vitae vulputate a, facilisis id sem. Pellentesque vestibulum sapien ac
@@ -146,3 +163,5 @@ turpis, sed molestie elit porttitor vel. In hac habitasse platea
 dictumst. Vivamus eget blandit nisl, id cursus massa. Cras bibendum, justo
 sollicitudin tincidunt commodo, ante turpis rhoncus eros, ut hendrerit leo
 purus in nisl.
+
+@(generate-bibliography)

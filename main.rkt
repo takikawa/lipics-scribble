@@ -4,7 +4,12 @@
                     author)
          (except-in scribble/core
                     paragraph)
+         (except-in racket/class
+                    abstract)
          scribble/private/defaults scribble/decode
+         scribble/html-properties
+         scribble/latex-properties
+         setup/main-collects
          setup/collects
          (rename-in scribble/doclang
                     [#%module-begin -#%module-begin])
@@ -18,7 +23,8 @@
          affil
          abstract
          paragraph paragraph*
-         volume-info)
+         volume-info
+         lipics-style)
 
 ;; header mostly taken from the lipics sample article
 (define (post-process doc)
@@ -121,14 +127,49 @@ FORMAT
 
 (define-includer include-abstract "lipicsabstract")
 
+;; Bibliography setup
+(define autobib-style-extras
+  (let ([abs (lambda (s)
+               (path->main-collects-relative
+                (collection-file-path s "scriblib")))])
+    (list
+     (make-css-addition (abs "autobib.css"))
+     (make-tex-addition (abs "autobib.tex")))))
+
+(define bib-single-style (make-style "AutoBibliography" autobib-style-extras))
+(define bibentry-style (make-style "Autobibentry" autobib-style-extras))
+(define colbibnumber-style (make-style "Autocolbibnumber" autobib-style-extras))
+(define colbibentry-style (make-style "Autocolbibentry" autobib-style-extras))
+
+(define lipics-style
+  (new
+   (class object%
+     (define/public (bibliography-table-style) bib-single-style)
+     (define/public (entry-style) colbibentry-style)
+     (define/public (disambiguate-date?) #f)
+     (define/public (collapse-for-date?) #f)
+     (define/public (get-cite-open) "[")
+     (define/public (get-cite-close) "]")
+     (define/public (get-group-sep) ", ")
+     (define/public (get-item-sep) ", ")
+     (define/public (render-citation date-cite i)
+       (make-element
+        (make-style "Thyperref" (list (command-extras (list (make-label i)))))
+        (list (number->string i))))
+     (define/public (render-author+dates author dates) dates)
+     (define (make-label i)
+       (string-append "autobiblab:" (number->string i)))
+     (define/public (bibliography-line i e)
+       ;; Output a single column table using \bibitem to match the
+       ;; LIPIcs format.
+       (list (make-nested-flow (make-style "bibitem" (list 'multicommand))
+                               ;; the "foo" doesn't matter because we let
+                               ;; autobib do cross-referencing
+                               (list (make-paragraph plain (list "foo")) e))))
+     (super-new))))
+
 ;; TODO
 ;; - test figures
 ;; - figure out listings
-;; - test bibliographies
-;;   - ugh. will probably need to override Autobibentry and whatever else to just call their stuff
-;;   - but how can we do the linking...
-;;   - heck, maybe just do our own munging based on autobib's data structures...
-;;     - yeah, probably easiest. I guess the `key` field of an `auto-bib` struct is the label...
-;;     - then generate \bibitem s. like in their example
 ;; - test footnotes, including on the title
 ;; - acks

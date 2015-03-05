@@ -12,3 +12,20 @@
     #1
   \end{abstract}
 }
+
+%% For bibliography
+
+%% hyper-refs for bibliography
+\newcommand{\Thyperref}[2]{\hyperref[#2]{#1}}
+
+%% Use the lipics bibliography macro
+\renewenvironment{AutoBibliography}
+{\begin{thebibliography}{50}} % FIXME: 50?
+{\end{thebibliography}}
+
+%% make this a no-op to make the bibliography show correctly
+%% (for single-column table output)
+\renewenvironment{SingleColumn}{}{}
+
+%% to get rid of the redundant "Bibliography" section header
+\renewcommand{\Ssectionstarx}[2]{}
