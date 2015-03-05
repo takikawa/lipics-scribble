@@ -17,7 +17,8 @@
          author
          affil
          abstract
-         paragraph paragraph*)
+         paragraph paragraph*
+         volume-info)
 
 ;; header mostly taken from the lipics sample article
 (define (post-process doc)
@@ -60,6 +61,17 @@ FORMAT
                           (list (decode-content (list affil-no))
                                 (decode-content name)))))
 
+(define (volume-info editors n-editors event volume issue starting-page-no)
+  (make-multiarg-element (make-style "volumeinfo" '())
+                         (map decode-content
+                              (map list
+                                   (list editors
+                                         n-editors
+                                         event
+                                         volume
+                                         issue
+                                         starting-page-no)))))
+
 
 ;; command wrappers
 ;; taken from classicthesis-scribble
@@ -98,7 +110,10 @@ FORMAT
   [paragraph*             "paragraph*"]
   [copyright              "Copyright"]
   [subject-classification "subjclass"]
-  [keywords               "keywords"])
+  [keywords               "keywords"]
+  [doi                    "DOI"]
+  [series-logo            "serieslogo"]
+  [event-short-name       "eventshortname"])
 
 (define-pre-title-wrappers
   [author-running "authorrunning"]
@@ -107,7 +122,6 @@ FORMAT
 (define-includer include-abstract "lipicsabstract")
 
 ;; TODO
-;; - doi (and editor macros in general)
 ;; - test figures
 ;; - test bibliographies
 ;;   - ugh. will probably need to override Autobibentry and whatever else to just call their stuff

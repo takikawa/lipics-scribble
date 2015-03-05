@@ -23,6 +23,8 @@ Other place, Some country
 @copyright{Bob Arctor and Bob Arctor, Jr.}
 @subject-classification{Dummy classification -- please refer to @url{http://www.acm.org/about/class/ccs98-html}}
 @keywords{Dummy keyword -- please provide 1--5 keywords}
+@doi{10.4230/LIPIcs.xxx.yyy.p}
+@volume-info["Billy Editor and Bill Editors" "2" "Conf title" "1" "1" "1"]
 
 @; @abstract{
 @; This is not a real abstract. It just plays one on TV.
