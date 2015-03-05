@@ -29,3 +29,24 @@
 
 %% to get rid of the redundant "Bibliography" section header
 \renewcommand{\Ssectionstarx}[2]{}
+
+%% For figures
+
+\DeclareCaptionFormat{myformat}{#3}
+\captionsetup{format=myformat}
+
+%% replace the colon that Scribble puts in that we don't want
+\def\decolonize#1:{#1}
+
+\renewcommand{\FigureTarget}[2]{%
+\kern0.05em{\color[rgb]{0.99,0.78,0.07}\rule{0.73em}{0.73em}}%
+\hspace*{0.67em}\textsf{\textbf{\decolonize#1\relax} % match font styling
+% to mimic the spacing in LIPIcs figure captions
+\hspace{-0.5em}}
+}
+
+\renewcommand{\Legend}[1]{~
+
+                          \hrule width \hsize height .33pt
+                          \vspace{4pt}
+                          \caption{#1}}

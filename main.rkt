@@ -169,6 +169,5 @@ FORMAT
      (super-new))))
 
 ;; TODO
-;; - test figures
 ;; - figure out listings
 ;; - acks

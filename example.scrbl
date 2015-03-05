@@ -1,6 +1,8 @@
 #lang lipics
 
-@(require scriblib/autobib
+@(require (except-in scribble/manual author)
+          scriblib/autobib
+          scriblib/figure
           scriblib/footnote)
 
 @(define-cite ~cite citet generate-bibliography #:style lipics-style)
@@ -73,7 +75,28 @@ nisi et aliquam.
 
 @subsection{Bah}
 
-Sed in finibus magna. Nunc ornare, lectus vitae fermentum lobortis, nisi odio
+@figure["arctor" "Bob Arctor's Figure"]{
+  @racketblock[
+    (define (fact n)
+      (if (= n 0)
+          1
+          (* n (fact (sub1 n)))))
+  ]
+}
+
+@figure["arctor2"
+        @string-append{Sed in finibus magna. Nunc ornare, lectus vitae fermentum lobortis, nisi odio
+                       vestibulum neque, nec aliquet lorem sem eu diam. Nulla quis urna turpis. Mauris
+                       blandit turpis justo, sed egestas augue efficitur vel. Proin cursus nulla}]{
+  @racketblock[
+    (define (fact n)
+      (if (= n 0)
+          1
+          (* n (fact (sub1 n)))))
+  ]
+}
+
+@Figure-ref["arctor"] sed in finibus magna. Nunc ornare, lectus vitae fermentum lobortis, nisi odio
 vestibulum neque, nec aliquet lorem sem eu diam. Nulla quis urna turpis. Mauris
 blandit turpis justo, sed egestas augue efficitur vel. Proin cursus nulla
 iaculis est dapibus, at semper libero egestas. Praesent nulla tellus, convallis
