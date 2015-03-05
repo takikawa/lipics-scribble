@@ -188,4 +188,6 @@ dictumst. Vivamus eget blandit nisl, id cursus massa. Cras bibendum, justo
 sollicitudin tincidunt commodo, ante turpis rhoncus eros, ut hendrerit leo
 purus in nisl.
 
+@acknowledgments{We thank New Path for this paper.}
+
 @(generate-bibliography)

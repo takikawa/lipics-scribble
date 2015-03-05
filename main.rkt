@@ -119,7 +119,8 @@ FORMAT
   [keywords               "keywords"]
   [doi                    "DOI"]
   [series-logo            "serieslogo"]
-  [event-short-name       "eventshortname"])
+  [event-short-name       "eventshortname"]
+  [acknowledgments        "acknowledgments"])
 
 (define-pre-title-wrappers
   [author-running "authorrunning"]
@@ -170,4 +171,3 @@ FORMAT
 
 ;; TODO
 ;; - figure out listings
-;; - acks
