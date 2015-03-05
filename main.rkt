@@ -123,6 +123,7 @@ FORMAT
 
 ;; TODO
 ;; - test figures
+;; - figure out listings
 ;; - test bibliographies
 ;;   - ugh. will probably need to override Autobibentry and whatever else to just call their stuff
 ;;   - but how can we do the linking...
