@@ -16,10 +16,15 @@
          affil
          abstract)
 
+;; header mostly taken from the lipics sample article
 (define (post-process doc)
   (add-defaults doc
                 ;; FIXME: allow configuration
-                (string->bytes/utf-8 "\\documentclass[letterpaper,USenglish]{lipics}")
+                (string->bytes/utf-8 #<<FORMAT
+\documentclass[letterpaper,USenglish]{lipics}
+\usepackage{microtype}
+\bibliographystyle{plain}
+FORMAT)
                 (collection-file-path "style.tex" "lipics")
                 (list (collection-file-path "lipics.cls"
                                             "lipics"))
