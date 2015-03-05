@@ -93,9 +93,12 @@ FORMAT
     (provide name)))
 
 (define-wrappers
-  [abstract   "lipicsabstract"]
-  [paragraph  "paragraph"]
-  [paragraph* "paragraph*"])
+  [abstract               "lipicsabstract"]
+  [paragraph              "paragraph"]
+  [paragraph*             "paragraph*"]
+  [copyright              "Copyright"]
+  [subject-classification "subjclass"]
+  [keywords               "keywords"])
 
 (define-pre-title-wrappers
   [author-running "authorrunning"]
@@ -104,9 +107,7 @@ FORMAT
 (define-includer include-abstract "lipicsabstract")
 
 ;; TODO
-;; - ACM subject classification
-;; - keywords and phrases
-;; - doi
+;; - doi (and editor macros in general)
 ;; - test figures
 ;; - test bibliographies
 ;;   - ugh. will probably need to override Autobibentry and whatever else to just call their stuff
@@ -114,6 +115,5 @@ FORMAT
 ;;   - heck, maybe just do our own munging based on autobib's data structures...
 ;;     - yeah, probably easiest. I guess the `key` field of an `auto-bib` struct is the label...
 ;;     - then generate \bibitem s. like in their example
-;; - copyright stuff (footer of first page, + whatever was in ECOOP chair's email)
 ;; - test footnotes, including on the title
 ;; - acks

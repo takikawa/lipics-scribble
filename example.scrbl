@@ -20,6 +20,10 @@ Other place, Some country
 @author-running{B. Arctor and B. Arctor, Jr.}
 @title-running{Still a Test}
 
+@copyright{Bob Arctor and Bob Arctor, Jr.}
+@subject-classification{Dummy classification -- please refer to @url{http://www.acm.org/about/class/ccs98-html}}
+@keywords{Dummy keyword -- please provide 1--5 keywords}
+
 @; @abstract{
 @; This is not a real abstract. It just plays one on TV.
 @; }
