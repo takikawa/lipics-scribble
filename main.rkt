@@ -24,7 +24,8 @@
 \documentclass[letterpaper,UKenglish]{lipics}
 \usepackage{microtype}
 \bibliographystyle{plain}
-FORMAT)
+FORMAT
+)
                 (collection-file-path "style.tex" "lipics")
                 (list (collection-file-path "lipics.cls"
                                             "lipics"))
