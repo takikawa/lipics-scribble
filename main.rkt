@@ -2,7 +2,9 @@
 
 (require (except-in scribble/base
                     author)
-         scribble/private/defaults scribble/core scribble/decode
+         (except-in scribble/core
+                    paragraph)
+         scribble/private/defaults scribble/decode
          setup/collects
          (rename-in scribble/doclang
                     [#%module-begin -#%module-begin])
@@ -14,7 +16,8 @@
          (rename-out [--#%module-begin #%module-begin])
          author
          affil
-         abstract)
+         abstract
+         paragraph paragraph*)
 
 ;; header mostly taken from the lipics sample article
 (define (post-process doc)
@@ -78,17 +81,26 @@ FORMAT
                (make-nested-flow (make-style style '(command))
                                  (part-blocks name*))))]))
     (provide name)))
+(define-syntax-rule (define-section-like name style)
+  (begin
+    (define (name #:tag [tag (symbol->string (gensym))] . str)
+      (make-multiarg-element (make-style style '())
+                             (list (decode-content (list tag))
+                                   (decode-content str))))
+    (provide name)))
 
 (define-wrappers
   [abstract "lipicsabstract"])
 
 (define-includer include-abstract "lipicsabstract")
 
+(define-section-like paragraph  "paragraph")
+(define-section-like paragraph* "paragraph*")
+
 ;; TODO
 ;; - ACM subject classification
 ;; - keywords and phrases
 ;; - doi
-;; - test sections, subsections, paragraphs
 ;; - test figures
 ;; - test bibliographies
 ;;   - ugh. will probably need to override Autobibentry and whatever else to just call their stuff
