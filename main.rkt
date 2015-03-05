@@ -21,7 +21,7 @@
   (add-defaults doc
                 ;; FIXME: allow configuration
                 (string->bytes/utf-8 #<<FORMAT
-\documentclass[letterpaper,USenglish]{lipics}
+\documentclass[letterpaper,UKenglish]{lipics}
 \usepackage{microtype}
 \bibliographystyle{plain}
 FORMAT)
