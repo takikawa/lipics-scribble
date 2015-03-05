@@ -19,7 +19,7 @@
 (define (post-process doc)
   (add-defaults doc
                 ;; FIXME: allow configuration
-                (string->bytes/utf-8 "\\documentclass[a4paper,UKenglish]{lipics}")
+                (string->bytes/utf-8 "\\documentclass[letterpaper,USenglish]{lipics}")
                 (collection-file-path "style.tex" "lipics")
                 (list (collection-file-path "lipics.cls"
                                             "lipics"))
