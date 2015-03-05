@@ -38,6 +38,10 @@ FORMAT
 )
                 (collection-file-path "style.tex" "lipics")
                 (list (collection-file-path "lipics.cls"
+                                            "lipics")
+                      (collection-file-path "cc-by.pdf"
+                                            "lipics")
+                      (collection-file-path "lipics-logo-bw.pdf"
                                             "lipics"))
                 #f))
 
