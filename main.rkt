@@ -91,25 +91,17 @@ FORMAT
                (make-nested-flow (make-style style '(command))
                                  (part-blocks name*))))]))
     (provide name)))
-(define-syntax-rule (define-section-like name style)
-  (begin
-    (define (name #:tag [tag (symbol->string (gensym))] . str)
-      (make-multiarg-element (make-style style '())
-                             (list (decode-content (list tag))
-                                   (decode-content str))))
-    (provide name)))
 
 (define-wrappers
-  [abstract "lipicsabstract"])
+  [abstract   "lipicsabstract"]
+  [paragraph  "paragraph"]
+  [paragraph* "paragraph*"])
 
 (define-pre-title-wrappers
   [author-running "authorrunning"]
   [title-running  "titlerunning"])
 
 (define-includer include-abstract "lipicsabstract")
-
-(define-section-like paragraph  "paragraph")
-(define-section-like paragraph* "paragraph*")
 
 ;; TODO
 ;; - ACM subject classification
