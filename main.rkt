@@ -116,5 +116,4 @@ FORMAT
 ;;     - then generate \bibitem s. like in their example
 ;; - copyright stuff (footer of first page, + whatever was in ECOOP chair's email)
 ;; - test footnotes, including on the title
-;; - test headers on pages 2+
 ;; - acks
