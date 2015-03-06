@@ -1,6 +1,7 @@
 #lang racket/base
 
-(require (except-in scribble/base
+(require "download.rkt"
+         (except-in scribble/base
                     author)
          (except-in scribble/core
                     paragraph)
@@ -57,12 +58,9 @@
 FORMAT
 )
                 (collection-file-path "style.tex" "lipics")
-                (list (collection-file-path "lipics.cls"
-                                            "lipics")
-                      (collection-file-path "cc-by.pdf"
-                                            "lipics")
-                      (collection-file-path "lipics-logo-bw.pdf"
-                                            "lipics"))
+                (list lipics-class-path
+                      lipics-cc-path
+                      lipics-logo-path)
                 #f))
 
 (define-syntax (--#%module-begin stx)
@@ -192,6 +190,9 @@ FORMAT
                                ;; autobib do cross-referencing
                                (list (make-paragraph plain (list "foo")) e))))
      (super-new))))
+
+;; Download necessary style files
+(download-lipics-files)
 
 ;; TODO
 ;; - figure out listings
