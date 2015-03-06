@@ -143,7 +143,7 @@ FORMAT
   [keywords               "keywords"]
   [doi                    "DOI"]
   [series-logo            "serieslogo"]
-  [event-short-name       "eventshortname"]
+  [event-short-name       "EventShortName"]
   [acknowledgments        "acknowledgments"])
 
 (define-pre-title-wrappers
