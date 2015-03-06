@@ -34,6 +34,17 @@
 \documentclass[letterpaper,UKenglish]{lipics}
 \usepackage{microtype}
 \bibliographystyle{plain}
+
+%% from http://tex.stackexchange.com/a/39418
+\makeatletter
+\newcommand{\dontusepackage}[2][]{%
+  \@namedef{ver@#2.sty}{9999/12/31}%
+  \@namedef{opt@#2.sty}{#1}}
+\makeatother
+
+%% Disable Scribble's default usepackage statements
+\dontusepackage[usenames,dvipsnames]{color}
+\dontusepackage{ccaption}
 FORMAT
 )
                 (collection-file-path "style.tex" "lipics")
