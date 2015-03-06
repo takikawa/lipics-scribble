@@ -45,6 +45,7 @@ Other place, Some country
 @keywords{Dummy keyword -- please provide 1--5 keywords}
 @doi{10.4230/LIPIcs.xxx.yyy.p}
 @volume-info["Billy Editor and Bill Editors" "2" "Conf title" "1" "1" "1"]
+@event-short-name{AARDVARK '34}
 
 @; @abstract{
 @; This is not a real abstract. It just plays one on TV.
