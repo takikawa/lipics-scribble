@@ -6,6 +6,11 @@ This package implements a Racket language for writing papers using the
 Installation
 ------------
 
+You can install the package from the [package catalog](http://pkgs.racket-lang.org)
+with the following command:
+
+`raco pkg install lipics`
+
 Usage
 -----
 
@@ -14,6 +19,10 @@ Use `#lang lipics` as your language. The language will behave like the
 typesetting.
 
 See [`example.scrbl`](example.scrbl) for an example document in this style.
+
+When the document is built, the style files for the LIPIcs format will
+be downloaded from the website and untarred into your Racket add-on folder
+(i.e., wherever `(find-system-path 'addon-dir)` points to).
 
 ---
 
