@@ -185,10 +185,12 @@ FORMAT
      (define/public (bibliography-line i e)
        ;; Output a single column table using \bibitem to match the
        ;; LIPIcs format.
-       (list (make-nested-flow (make-style "bibitem" (list 'multicommand))
-                               ;; the "foo" doesn't matter because we let
-                               ;; autobib do cross-referencing
-                               (list (make-paragraph plain (list "foo")) e))))
+       (list (make-nested-flow
+              (make-style "bibitem" (list 'multicommand))
+              ;; the string here doesn't matter because we let
+              ;; autobib do cross-referencing, but it should be freshly
+              ;; generated to avoid warnings
+              (list (make-paragraph plain (list (symbol->string (gensym)))) e))))
      (super-new))))
 
 ;; Download necessary style files
