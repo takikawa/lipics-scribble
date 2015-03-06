@@ -51,6 +51,9 @@
   \let\@tmpmkpream\@mkpream
   \let\@tmpaddamp\@addamp
 \makeatother
+
+%% Save the value of \rmdefault to restore
+\let\tmprmdefault\rmdefault
 FORMAT
 )
                 (collection-file-path "style.tex" "lipics")
