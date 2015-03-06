@@ -116,6 +116,12 @@ convallis purus.
 
 @subsection{2.1}
 
+@figure["table" "A Table"]{
+  @tabular[#:sep @hspace[1]
+    (list (list "this" "is")
+          (list "a" "table"))]
+}
+
 Nunc ultrices enim eget fringilla rhoncus. Cras ullamcorper lacus at convallis
 ornare. Mauris a purus molestie, malesuada elit sit amet, porta magna. In
 maximus in orci ut dapibus. Nam eu blandit ante. Suspendisse ac rhoncus

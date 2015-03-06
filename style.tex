@@ -53,3 +53,13 @@
 
 %% Acknowledgments macro
 \newcommand{\acknowledgments}[1]{\subparagraph*{Acknowledgments} #1}
+
+%% Restore the saved definitions of the array package. We
+%% have to do this since stabular redefines them
+\makeatletter
+  \let\@mkpream\@tmpmkpream
+  \let\@addamp\@tmpaddamp
+\makeatother
+
+%% Override bigtabular to use tabular (doesn't conflict with array)
+\renewenvironment{bigtabular}{\begin{tabular}}{\end{tabular}}

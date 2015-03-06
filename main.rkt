@@ -45,6 +45,12 @@
 %% Disable Scribble's default usepackage statements
 \dontusepackage[usenames,dvipsnames]{color}
 \dontusepackage{ccaption}
+
+%% Save array package's internals to restore later
+\makeatletter
+  \let\@tmpmkpream\@mkpream
+  \let\@tmpaddamp\@addamp
+\makeatother
 FORMAT
 )
                 (collection-file-path "style.tex" "lipics")
