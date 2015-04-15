@@ -25,7 +25,6 @@
 ;; Download lipics class file to the add-on directory
 (define (download-lipics-files)
   (unless (directory-exists? lipics-base-path)
-    (make-directory lipics-base-path)
     (define tmp (make-temporary-file))
     (displayln (format "Downloading class file via ~a" lipics-url))
     (define out (open-output-file tmp #:exists 'truncate))
@@ -41,6 +40,8 @@
                              "Invalid MD5 hash for lipics tarball"
                              "expected" lipics-hash
                              "given" hash))
+    ;; Don't make the directory until we have a valid download
+    (make-directory lipics-base-path)
     (untgz tmp
            #:dest lipics-base-path
            #:strip-count 1
