@@ -89,7 +89,10 @@ to get started.
 
 @defproc[(acknowledgments [pre-content pre-content?] ...)
          element?]{
-  Typesets an acknowledgments section.
+  Typesets an acknowledgments section. This will normally go in the last
+  section of a document. Note that @racket[acknowledgments] will not typeset
+  as expected if it is used outside of a section, such as in the top-level
+  of a document that uses @racket[include-section].
 }
 
 @defproc[(author-running [pre-content pre-content?] ...)
