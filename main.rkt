@@ -32,6 +32,8 @@
   (add-defaults doc
                 ;; FIXME: allow configuration
                 (string->bytes/utf-8 #<<FORMAT
+%% Scribble needs these options, so provide before lipics
+\PassOptionsToPackage{usenames,dvipsnames}{color}
 \documentclass[letterpaper,UKenglish]{lipics}
 \usepackage{microtype}
 \bibliographystyle{plain}
@@ -44,7 +46,6 @@
 \makeatother
 
 %% Disable Scribble's default usepackage statements
-\dontusepackage[usenames,dvipsnames]{color}
 \dontusepackage{ccaption}
 
 %% Save array package's internals to restore later
