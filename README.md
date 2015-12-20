@@ -1,5 +1,7 @@
 # lipics-scribble
 
+[![Scribble](https://img.shields.io/badge/Docs-Scribble-blue.svg)](http://pkg-build.racket-lang.org/doc/lipics/index.html)
+
 This package implements a Racket language for writing papers using the
 [LIPIcs](http://www.dagstuhl.de/publikationen/lipics/) paper format.
 
