@@ -2,11 +2,11 @@
 
 ;; Provides helpers for downloading lipics style files
 
-(require file/md5
-         file/untgz
+(require file/untgz
          net/url
          racket/file
-         racket/port)
+         racket/port
+         sha)
 
 (provide lipics-class-path
          lipics-cc-path
@@ -14,7 +14,7 @@
          download-lipics-files)
 
 (define lipics-url  "http://drops.dagstuhl.de/styles/lipics/lipics-authors.tgz")
-(define lipics-hash #"7338672a9c77897adc85df782a1d3bab")
+(define lipics-hash "e6e0ad84fcec0382073e5622f73a2c57df1690fc40647bc180f579ba61f06903")
 
 (define lipics-base-path
   (build-path (find-system-path 'addon-dir) "lipics-style-files"))
@@ -34,10 +34,10 @@
     (close-output-port out)
     (define hash
       (with-input-from-file tmp
-        (λ () (md5 (current-input-port) #t))))
+        (λ () (bytes->hex-string (sha256 (port->bytes (current-input-port)))))))
     (unless (equal? hash lipics-hash)
       (raise-arguments-error 'lipics
-                             "Invalid MD5 hash for lipics tarball"
+                             "Invalid SHA-256 hash for lipics tarball"
                              "expected" lipics-hash
                              "given" hash))
     ;; Don't make the directory until we have a valid download

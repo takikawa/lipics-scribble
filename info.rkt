@@ -2,7 +2,7 @@
 
 (define collection "lipics")
 
-(define deps '("base" "scribble-lib" "at-exp-lib"))
+(define deps '("base" "scribble-lib" "at-exp-lib" "sha"))
 (define build-deps '("racket-doc" "scribble-doc"))
 
 (define scribblings '(("lipics.scrbl" () ("Scribble Libraries"))))
