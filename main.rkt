@@ -68,7 +68,10 @@ FORMAT
   (syntax-case stx ()
     [(_ ?e ...)
      (quasisyntax/loc stx
-       (-#%module-begin doc post-process () ?e ...))]))
+       (-#%module-begin doc post-process ()
+                        ;; Download necessary style files, if needed
+                        (download-lipics-files)
+                        ?e ...))]))
 
 ;; Reader configuration for #lang
 (module reader scribble/base/reader
@@ -193,9 +196,6 @@ FORMAT
               ;; generated to avoid warnings
               (list (make-paragraph plain (list (symbol->string (gensym)))) e))))
      (super-new))))
-
-;; Download necessary style files
-(download-lipics-files)
 
 ;; TODO
 ;; - figure out listings
